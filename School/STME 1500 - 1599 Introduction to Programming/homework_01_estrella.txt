@@ -1,0 +1,143 @@
+Keith Estrella
+Programming HW 1
+
+Programming Excercise 2.15
+
+CODE:
+-----------PointDist.java--------------------------------------------------------------
+import java.util.Scanner;
+public class PointDist {
+    public static void main(String[] args) {
+        Scanner num = new Scanner(System.in);
+        double[] xy = new double[4];
+        
+        System.out.print("Input x1, x2, y1, y2: ");
+        for(int j = 0; j <xy.length; j++){
+            xy[j] = num.nextDouble();
+        }
+     
+        double calc = Math.pow(xy[1] - xy[0], 2.0) + Math.pow(xy[3] - xy[2], 2.0);
+        double ans = Math.pow(calc, 0.5);
+        
+        System.out.println("The distance between the two points is " + ans);
+            }
+}
+---------------------------------------------------------------------------------------
+
+RESULTS:
+-------------Sample Input and Output -----------------------------
+Input x1, x2, y1, y2: 1.5 4 -3.4 5
+The distance between the two points is 8.764131445842194
+------------------------------------------------------------------
+
+Programming Excercise 2.18
+
+--------------IntTable.java------------------------------------------
+public class IntTable {
+    public static void main(String[] args) {
+        int j = 1;
+        int a = 1;
+        int b = 2;
+        System.out.println("a     b     pow(a,b)");
+        while (j < 6){
+            int ab = (int)Math.pow(a, b);
+            System.out.println(a+"     "+b+"     "+ab);
+            a++;
+            b++;
+            j++;
+        }
+    }
+}
+--------------------------------------------------------------------
+
+RESULTS:
+--------------Sample Output-------------------------------------
+a     b     pow(a,b)
+1     2     1
+2     3     8
+3     4     81
+4     5     1024
+5     6     15625
+----------------------------------------------------------------
+
+Programming Excercise 3.3
+
+----------------LinearEq.java------------------------------------------
+import java.util.Scanner;
+public class LinearEq{
+    public static void main(String[] args) {
+        Scanner num = new Scanner(System.in);
+        double[] xyz = new double[6];
+        
+        System.out.print("Input a, b, c, d, e, f: ");
+        for(int j = 0; j <xyz.length; j++){
+            xyz[j] = num.nextDouble();
+        }
+        double check = (xyz[0]*xyz[3]) - (xyz[1]*xyz[2]);
+        if (check == 0.0){
+            System.out.println("The equation has no solution");
+        }else{
+            double x1 = (xyz[4]*xyz[3]) - (xyz[1]*xyz[5]);
+            double x2 = (xyz[0]*xyz[3]) - (xyz[1]*xyz[2]);
+            double x = x1/x2;
+            
+            double y1 = (xyz[0]*xyz[5]) - (xyz[4]*xyz[2]);
+            double y2 = (xyz[0]*xyz[3]) - (xyz[1]*xyz[2]);
+            double y = y1/y2;
+            
+            System.out.println("x is "+x+" and y is "+y);
+        }
+    }
+}
+-----------------------------------------------------------------------
+
+RESULTS:
+
+Input a, b, c, d, e, f: 9.0 4.0 3.0 -5.0 -6.0 -21.0
+x is -2.0 and y is 3.0
+
+Input a, b, c, d, e, f: 1.0 2.0 2.0 4.0 4.0 5.0
+The equation has no solution
+
+
+Programming Excercise 3.20
+
+-------------------------TempWind.java------------------------------------------------------------------------------
+import java.util.Scanner;
+public class TempWind{
+    public static void main(String[] args) {
+        Scanner ans = new Scanner(System.in);
+        System.out.print("Enter Temperature in F between -58 and 41: ");
+        double temp = ans.nextDouble();
+        
+        System.out.print("Enter Wind Speed (>=2) in miles per hour: ");
+        double wind = ans.nextDouble();
+        
+        int check = 0;
+        
+        if(temp > 41.0 || temp < -58.0){
+            System.out.println("Temperature is invalid");
+            check++;
+        }
+        if(wind < 2){
+            System.out.println("Wind Speed is invalid");
+            check++;
+        }
+        if(check == 0){
+            double chill = 35.74 + 0.6215*temp - 35.75*Math.pow(wind, 0.16) + 0.4275*temp*Math.pow(wind,0.16);
+            System.out.println("The wind chill index is "+chill);
+        }
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------
+
+RESULTS:
+---------------Sample Input and Output---------------------
+Enter Temperature in F between -58 and 41: 5.3
+Enter Wind Speed (>=2) in miles per hour: 6
+The wind chill index is -5.567068455881625
+
+Enter Temperature in F between -58 and 41: -73
+Enter Wind Speed (>=2) in miles per hour: 2
+Temperature is invalid
+-----------------------------------------------------------

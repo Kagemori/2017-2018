@@ -1,0 +1,145 @@
+Keith Estrella
+Programming HW 2
+
+Programming Excercise 4.6
+
+CODE:
+-----------RPOAC.java--------------------------------------------------------------
+public class RPOAC{
+    public static void main(String[] args) {
+       // Create variables
+       double radius = 40.0;
+       
+       // Generate 3 Points on Circle
+       double angle = Math.random() * 2.0 * Math.PI;
+       double x1 = radius * Math.cos(angle);
+       double y1 = radius * Math.sin(angle);
+
+       angle = Math.random() * 2.0 * Math.PI;
+       double x2 = radius * Math.cos(angle);
+       double y2 = radius * Math.sin(angle);
+
+       angle = Math.random() * 2.0 * Math.PI;
+       double x3 = radius * Math.cos(angle);
+       double y3 = radius * Math.sin(angle);
+       
+       //Calculate length of each side between points
+       double c = Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));
+       double b = Math.sqrt((x3-x1)*(x3-x1)+(y3-y1)*(y3-y1));
+       double a = Math.sqrt((x3-x2)*(x3-x2)+(y3-y2)*(y3-y2));
+       
+       //Find angles using law of cosines
+       double C = ((a*a)+(b*b)-(c*c))/(2*a*b);
+       double B = ((a*a)+(c*c)-(b*b))/(2*a*c);
+       double A = ((b*b)+(c*c)-(a*a))/(2*b*c);
+       
+       //Calculate angle of each corner of the triangle
+       double angle1 = Math.acos(A);
+       double angle2 = Math.acos(B);
+       double angle3 = Math.acos(C);
+       
+       //Display all Points and respective angles
+       System.out.println("Point 1 ["+x1+" "+y1+"] has angle "+angle1);
+       System.out.println("Point 2 ["+x2+" "+y2+"] has angle "+angle2);
+       System.out.println("Point 3 ["+x3+" "+y3+"] has angle "+angle3);
+       
+       double totalAngle = angle1+angle2+angle3;
+       System.out.println("TOTAL INTERIOR ANGLE = "+totalAngle);
+    }
+    
+}
+---------------------------------------------------------------------------------------
+
+RESULTS:
+-------------Sample Output -----------------------------
+Point 1 [23.668462701340186 -32.24599003527832] has angle 1.0690627156337054
+Point 2 [39.74391256108253 4.5190059014153015] has angle 1.547113507782232
+Point 3 [-25.168698375911394 31.0891721032001] has angle 0.5254164301738554
+TOTAL INTERIOR ANGLE = 3.141592653589793
+------------------------------------------------------------------
+
+Programming Excercise 4.8
+
+--------------ASCIICode.java------------------------------------------
+//Imports Scanner
+import java.util.Scanner;
+
+public class ASCIICode {
+    public static void main(String[] args) {
+        //Creates scanner
+        Scanner input = new Scanner(System.in);
+        //Print user prompt and generates variable for input
+        System.out.print("Enter an ASCII code:");
+        int x = input.nextInt();
+        //Prints input and respective ASCII symbol
+        System.out.println("The character for ASCII code " + x + " is "+ (char) x);
+    }
+    
+}
+--------------------------------------------------------------------
+
+RESULTS:
+--------------Sample Input and Output-------------------------------------
+Enter an ASCII code:12
+The character for ASCII code 12 is 
+----------------------------------------------------------------
+
+Programming Excercise 4.9
+
+----------------Char2Uni.java------------------------------------------
+//Imports Scanner
+import java.util.Scanner;
+
+public class Char2Uni {
+    public static void main(String[] args) {
+        //Creates new scanner
+        Scanner input = new Scanner(System.in);
+        //Prompts user to input
+        System.out.print("Enter a character: ");
+        String x = input.nextLine();
+        //Converts input to a character
+        char y = x.charAt(0);
+        //Prints output
+        System.out.println("The Unicode for the character " + y + " is "+ (int) y);
+    }
+    
+}
+-----------------------------------------------------------------------
+
+RESULTS:
+---------------Sample Input and Output---------------------
+Enter a character: A
+The Unicode for the character A is 65
+-----------------------------------------------------------
+
+Programming Excercise 4.22
+
+-------------------------SubStrCode.java------------------------------------------------------------------------------
+//Imports Scanner
+import java.util.Scanner;
+
+public class SubStrCode {
+    public static void main(String[] args) {
+        //Creates scanner
+        Scanner input = new Scanner(System.in);
+        //Prompts user to input each string
+        System.out.print("Enter string s1:");
+        String s1 = input.nextLine();
+        System.out.print("Enter string s2:");
+        String s2 = input.nextLine();
+        //Creates an if-else to check whether s1 contains s2 in the string and returns whether or not it is a substring
+        if (s1.contains(s2)) {
+            System.out.println(s2 + " is a substring of " + s1);
+        }else{
+            System.out.println(s2 + " is not a substring of " + s1);
+        }
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------
+
+RESULTS:
+---------------Sample Input and Output---------------------
+Enter string s1:ABSD
+Enter string s2:SD
+SD is a substring of ABSD
+-----------------------------------------------------------
